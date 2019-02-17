@@ -1,0 +1,29 @@
+body {
+  padding: 10px;
+  background-color: #fdfcfc;
+}
+
+nav + h2 {
+  margin-top: 56px;
+}
+
+ul {
+  width: 600px;
+}
+
+.input-group {
+  width: 600px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-container div p {
+  text-align: center;
+}
+
+.flex-container div {
+  text-align: center;
+}

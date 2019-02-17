@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Лабораторная работа №1</title>
+    <script src="./jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.min.css">
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!--Header-->
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Лабораторная работа №1 по криптографии</a>
+    </nav>
+    <!---------->
+    <!--First section-->
+    <h2>
+      1. Реализуйте шифр Цезаря для зашифрования и расшифрования слов на русском или английском языке.
+    </h2>
+    <div class="flex-container">
+      <div>
+        <p>Алгоритм для зашифрования:</p>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-info list-group-item-action">1. Выбрать язык (русский или английский)</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">2. Выбрать слово</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">3. Выбрать шаг смещения (сдвиг)</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">4. Каждый символ слова заменить на его шифровку (код буквы + сдвиг)</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">5. Получить зашифрованное слово</li>
+        </ul>
+      </div>
+      <div>
+        <p>Алгоритм для расшифрования:</p> 
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-info list-group-item-action">1. Определить язык (русский или английский)</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">2. Взять зашифрованное слово</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">3. Определить шаг смещения (сдвиг)</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">4. Каждый символ слова заменить на его шифровку (код буквы - сдвиг)</li>
+          <li class="list-group-item list-group-item-info list-group-item-action">5. Получить исходное слово</li>
+        </ul>
+      </div>
+    </div>    
+
+    <h3>Реализация:</h3>
+    <div class="flex-container">  
+      <div>
+          <p>Выберите язык</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name="lang_encode" class="ru" autocomplete="off" checked> Русский
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="lang_encode" class="en" autocomplete="off"> Английский
+            </label>
+          </div>
+    
+          <p>Введите слово для зашифрования</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Слово</span>
+            </div>
+            <input type="text" id="word_encode" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+    
+          <p>Введите шаг смещения (сдвиг)</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Сдвиг</span>
+            </div>
+            <input type="number" id="step_encode" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+    
+          <button type="button" class="btn btn-primary encode">Зашифровать</button>
+          <br><br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Результат</span>
+            </div>
+            <input type="text" class="form-control" id="result_encode" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+      </div>     
+
+      <div>
+          <p>Выберите язык</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name="lang_decode" class="ru" autocomplete="off" checked> Русский
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="lang_decode" class="en" autocomplete="off"> Английский
+            </label>
+          </div>
+    
+          <p>Введите слово для расшифрования</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Слово</span>
+            </div>
+            <input type="text" id="word_decode" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+    
+          <p>Введите шаг смещения (сдвиг)</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Сдвиг</span>
+            </div>
+            <input type="number" id="step_decode" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+    
+          <button type="button" class="btn btn-primary decode">Расшифровать</button>
+          <br><br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Результат</span>
+            </div>
+            <input type="text" class="form-control" id="result_decode" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+      </div>
+    </div>
+    <!------------------>
+    <!--Second Section-->
+    <h2>
+      2. Реализуйте полный перебор для криптограммы, полученной с помощью шифра Цезаря.
+       Вводим криптограмму, а программа выводит все возможные
+      расшифровки для данной криптограммы.
+		</h2>
+		<div class="flex-container">
+			<div>
+				<p>Выберите язык</p>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-secondary active">
+						<input type="radio" name="lang_decode_second" class="ru" autocomplete="off" checked> Русский
+					</label>
+					<label class="btn btn-secondary">
+						<input type="radio" name="lang_decode_second" class="en" autocomplete="off"> Английский
+					</label>
+				</div>
+
+				<p>Введите криптограмму</p>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Криптограмма</span>
+					</div>
+					<input type="text" id="cryptogram" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+				</div>
+
+				<button type="button" class="btn btn-primary second-section-button">Вывести все расшифровки</button>
+				<br><br>
+
+				<table class="table table-hover table-bordered">
+					<thead>
+						<tr class="table-primary">
+							<th scope="col">Сдвиг</th>
+							<th scope="col">Расшифровка</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!------------------>
+		<!--Third Section-->
+		<h2>3. Реализуйте шифр Цезаря для зашифрования и расшифрования файла.
+      Считайте, что ASCII-символ является буквой из 256-буквенного алфавита.
+    </h2>
+		<!------------------>
+    <script src="script.js"></script>
+  </body>
+</html>
