@@ -167,6 +167,37 @@
 		<h2>3. Реализуйте шифр Цезаря для зашифрования и расшифрования файла.
       Считайте, что ASCII-символ является буквой из 256-буквенного алфавита.
     </h2>
+
+		<h3>При нажатии на кнопки "Зашифровать" и "Расшифровать" начнется скачивание файла.</h3>
+		<div class="flex-container">
+			<div>
+				<p>Выберите файл на компьютере</p>
+
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroupFileAddon01">Файл</span>
+					</div>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="in" aria-describedby="inputGroupFileAddon01">
+						<label id="name_of_file" class="custom-file-label" for="in">Имя файла...</label>
+					</div>
+				</div>
+
+				<p>Введите шаг смещения (сдвиг)</p>
+
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Сдвиг</span>
+					</div>
+					<input type="text" id="shift" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<input type="hidden" id="hex" value="1">
+
+				<p>Выберите операцию</p>
+				<button type="button" class="btn btn-primary encode_third">Зашифровать</button>
+				<button type="button" class="btn btn-primary decode_third">Расшифровать</button>
+			</div>
+		</div>
 		<!------------------>
     <script src="script.js"></script>
   </body>
